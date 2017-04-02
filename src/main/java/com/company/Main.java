@@ -18,16 +18,21 @@ public class Main {
      EntityManagerFactory emf = Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
      EntityManager entityManager = emf.createEntityManager();
      entityManager.getTransaction().begin();
+
      Cinema c = new Cinema();
      Hall h = new Hall();
-     c.addHall(h);
      Movie m = new Movie();
      Session s = new Session();
+
+     c.addHall(h);
+     entityManager.persist(c);
+
      h.addSession(s);
      m.addSession(s);
 
 
      entityManager.persist(m);
+
 
      entityManager.getTransaction().commit();
      entityManager.close();

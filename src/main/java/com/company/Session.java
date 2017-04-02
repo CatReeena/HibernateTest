@@ -21,9 +21,10 @@ public class Session {
     @ManyToOne
     private Hall hall;
 
-    public void setId(final UUID id) {
+  /*  public void setId(final UUID id) {
         this.id = id;
     }
+    */
 
     public UUID getId()
     {

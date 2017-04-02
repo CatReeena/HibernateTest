@@ -1,9 +1,7 @@
 package com.company;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Created by Shera on 27.03.2017.
@@ -15,18 +13,19 @@ public class Movie {
     @GeneratedValue
     private UUID id;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    List<Session> sessions = new ArrayList();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "movie")
+    Set<Session> sessions = new HashSet<>();
 
-    public void setId(final UUID id) {
+   /* public void setId(final UUID id) {
         this.id = id;
     }
+    */
 
     public UUID getId()
     {
         return id;
     }
-    public List<Session> getSessions()
+    public Set<Session> getSessions()
     {
         return sessions;
     }
