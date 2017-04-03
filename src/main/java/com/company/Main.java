@@ -19,20 +19,27 @@ public class Main {
      EntityManager entityManager = emf.createEntityManager();
      entityManager.getTransaction().begin();
 
-     Cinema c = new Cinema();
-     Hall h = new Hall();
-     Movie m = new Movie();
-     Session s = new Session();
+     Cinema cinema = new Cinema();
+     Hall hall = new Hall();
+     Movie movie = new Movie();
+     Session session = new Session();
 
-     c.addHall(h);
-     entityManager.persist(c);
+     cinema.addHall(hall);
+     entityManager.persist(cinema);
 
-     h.addSession(s);
-     m.addSession(s);
+     entityManager.persist(cinema);
+     hall.addSession(session);
+     movie.addSession(session);
+
+     entityManager.persist(movie);
+    entityManager.getTransaction().commit();
 
 
-     entityManager.persist(m);
+     entityManager.close();
+    entityManager = emf.createEntityManager();
+    entityManager.getTransaction().begin();
 
+    Cinema foundCinema = entityManager.find(Cinema.class,cinema.getId());
 
      entityManager.getTransaction().commit();
      entityManager.close();
