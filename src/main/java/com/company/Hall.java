@@ -13,6 +13,7 @@ public class Hall {
 
     @Id
     @GeneratedValue
+    @Column( columnDefinition = "BINARY(16)", length = 16 )
     private UUID id;
 
     @ManyToOne

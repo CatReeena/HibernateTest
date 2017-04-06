@@ -2,6 +2,7 @@ package com.company;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.FlushModeType;
 import javax.persistence.Persistence;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -39,7 +40,7 @@ public class Main {
     entityManager = emf.createEntityManager();
     entityManager.getTransaction().begin();
 
-    Cinema foundCinema = entityManager.find(Cinema.class,cinema.getId());
+    Cinema foundCinema = entityManager.find(Cinema.class, cinema.getId());
 
      entityManager.getTransaction().commit();
      entityManager.close();

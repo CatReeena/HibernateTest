@@ -11,6 +11,7 @@ public class Movie {
 
     @Id
     @GeneratedValue
+    @Column( columnDefinition = "BINARY(16)", length = 16 )
     private UUID id;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "movie")
